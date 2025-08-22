@@ -1,0 +1,8 @@
+objdump -D --no-show-raw-insn --no-leading-addr --no-show-raw-insn --no-print-imm-hex --macho --no-leading-headers --disassemble-zeroes --no-show-raw-insn --no-symbolic-operands --x86-asm-syntax=intel 
+objdump -D --no-show-raw-insn --no-leading-addr --no-show-raw-insn --no-print-imm-hex --macho --no-leading-headers --disassemble-zeroes --no-show-raw-insn --no-symbolic-operands --x86-asm-syntax=att \
+'/Users/li/Documents/GitHub/framework_asm/15.x-WIFI/patched/System/Library/Frameworks/CoreWLAN.framework/Versions/A/CoreWLAN' |  \
+sed -e 's/ ptr//g' -e 's/\[rbp - 0x[0-9a-f]*\]/[rbp - 0]/g' -e 's/r8b/byte r8/g' | \
+awk '/^$/ {next} !/^Disassembly/ && !/^<$$.*$$>:/' | \
+> '/Users/li/Documents/GitHub/framework_asm/15.x-WIFI/patched-asm/corewlan.asm'
+
+
